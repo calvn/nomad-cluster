@@ -23,5 +23,5 @@ Feel free to change those to suit your particular needs.
 As of Nomad 0.1.2 there is no Consul integration, and therefore vagrant-hostmanager is used to manage discovery of nodes
 
 ## Prerequisites:
-Vagrant 1.7.4+
-vagrant-hostmanager
+- Vagrant 1.7.4+
+- vagrant-hostmanager
