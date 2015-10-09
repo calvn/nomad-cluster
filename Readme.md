@@ -1,5 +1,5 @@
 # Nomad Cluster
-This project provides a way to quickly spin up a test nomad cluster with three servers and one client, each on their own VMs.
+This project provides a way to quickly spin up a test nomad cluster with three servers and one client, each agent on their own VMs.
 
 ## Commands
 ```shell
@@ -15,6 +15,3 @@ As of Nomad 0.1.2 there is no Consul integration, and therefore vagrant-hostmana
 ## Prerequisites:
 Vagrant 1.7.4+
 vagrant-hostmanager
-
-## TODO
-Use /etc/default/nomad

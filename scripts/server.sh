@@ -19,5 +19,6 @@ server {
 }
 EOF
 
+sudo mv -f /tmp/nomad.default /etc/default/nomad
 sudo mv -f /tmp/server.hcl /etc/nomad.d/server.hcl
 sudo service nomad start || sudo service nomad restart
