@@ -1,8 +1,18 @@
 # Nomad Cluster
 This project provides a way to quickly spin up a test nomad cluster with three servers and one client, each agent on their own VMs.
 
+```ShellSession
+$ vagrant status
+Current machine states:
+
+nomad-server1             not created (virtualbox)
+nomad-server2             not created (virtualbox)
+nomad-server3             not created (virtualbox)
+nomad-client              not created (virtualbox)
+```
+
 ## Commands
-```shell
+```ShellSession
 $ vagrant up
 ```
 
