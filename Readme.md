@@ -1,5 +1,5 @@
 # Nomad Cluster
-This project provides a way to quickly spin up a test nomad cluster with three servers and one client, each agent on their own VMs.
+This project provides a way to quickly spin up a test nomad cluster with three servers and one client, each agent on its own VM.
 
 ```ShellSession
 $ vagrant status
