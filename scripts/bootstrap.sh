@@ -7,7 +7,7 @@ sudo apt-get install -y unzip curl wget
 # Download Nomad
 echo Fetching Nomad...
 cd /tmp/
-curl -sSL https://dl.bintray.com/mitchellh/nomad/nomad_0.1.2_linux_amd64.zip -o nomad.zip
+curl -sSL https://releases.hashicorp.com/nomad/0.2.1/nomad_0.2.1_linux_amd64.zip -o nomad.zip
 
 echo Installing Nomad...
 unzip nomad.zip
@@ -15,7 +15,9 @@ sudo chmod +x nomad
 sudo mv nomad /usr/local/bin/nomad
 
 sudo mkdir /etc/nomad.d
+sudo mkdir /var/lib/nomad
 sudo chmod a+w /etc/nomad.d
+sudo chmod a+w /var/lib/nomad
 
 # Set up Nomad as a service
 cat > /tmp/nomad.conf <<EOF
@@ -35,3 +37,38 @@ end script
 EOF
 
 sudo mv -f /tmp/nomad.conf /etc/init/nomad.conf
+
+
+# Download consul
+echo Fetching Consul...
+cd /tmp/
+curl -sSL https://releases.hashicorp.com/consul/0.6.0-rc2/consul_0.6.0-rc2_linux_amd64.zip -o consul.zip
+
+echo Installing Consul...
+unzip consul.zip
+sudo chmod +x consul
+sudo mv consul /usr/local/bin/consul
+
+sudo mkdir /etc/consul.d
+sudo chmod a+w /etc/consul.d
+sudo mkdir /var/lib/consul
+sudo chmod a+w /var/lib/consul
+
+#Set up Consul as a service
+cat > /tmp/consul.conf <<EOF
+description "Consul agent as a service"
+author "Calvin Leung Huang"
+
+start on runlevel [2345]
+stop on shutdown
+
+script
+  if [ -f /etc/default/consul ]; then
+    . /etc/default/consul
+  fi
+  CMD="/usr/local/bin/consul agent -config-dir /etc/consul.d/ \$OPTIONS"
+  exec \$CMD
+end script
+EOF
+
+sudo mv -f /tmp/consul.conf /etc/init/consul.conf

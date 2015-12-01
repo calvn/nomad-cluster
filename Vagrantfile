@@ -29,28 +29,22 @@ Vagrant.configure(2) do |config|
   #== Nomad servers
   1.upto(3) do |i|
     config.vm.define "nomad-server#{i}" do |server|
-      server.vm.box = "puphpet/ubuntu1404-x64"
+      server.vm.box = "ubuntu/trusty64"
       server.vm.hostname = "nomad-server#{i}"
       server.vm.network "private_network", ip: "192.168.111.#{i + 1}"
 
       server.vm.provision "shell", path: "scripts/server.sh", args: "192.168.111.#{i + 1}", privileged: false
       server.vm.provision "shell", path: "scripts/join.sh", privileged: false
-
-      server.hostmanager.manage_host = true
-      server.hostmanager.aliases = %W(nomad-server#{i}.node.dc1.consul)
     end
   end
 
   #== Nomad client
   config.vm.define "nomad-client" do |client|
-    client.vm.box = "puphpet/ubuntu1404-x64"
+    client.vm.box = "ubuntu/trusty64"
     client.vm.hostname = "nomad-client"
 
     client.vm.network "private_network", ip: "192.168.111.5"
 
     client.vm.provision "shell", path: "scripts/client.sh", privileged: false
-
-    client.hostmanager.manage_host = true
-    client.hostmanager.aliases = %W(nomad-client.node.dc1.consul)
   end
 end
