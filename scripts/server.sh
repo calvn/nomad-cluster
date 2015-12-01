@@ -23,6 +23,14 @@ sudo mv -f /tmp/nomad.default /etc/default/nomad
 sudo mv -f /tmp/server.hcl /etc/nomad.d/server.hcl
 sudo service nomad start || sudo service nomad restart
 
+# Add localhost nameserver
+cat > /tmp/head <<EOF
+nameserver 127.0.0.1
+EOF
+
+sudo mv -f /tmp/base /etc/resolvconf/resolv.conf.d/base
+sudo resolvconf -u
+
 # Consul server config
 cat > /tmp/consul_server.json <<EOF
 {
@@ -30,7 +38,17 @@ cat > /tmp/consul_server.json <<EOF
   "server": true,
   "bind_addr": "$1",
   "bootstrap_expect": 3,
-  "log_level": "debug"
+  "log_level": "debug",
+  "ports": {
+    "dns": 53
+  },
+  "recursors": [
+    "8.8.8.8"
+  ],
+  "dns_config": {
+    "allow_stale": true,
+    "max_stale": "1s"
+  }
 }
 EOF
 

@@ -45,6 +45,6 @@ Vagrant.configure(2) do |config|
 
     client.vm.network "private_network", ip: "192.168.111.5"
 
-    client.vm.provision "shell", path: "scripts/client.sh", privileged: false
+    client.vm.provision "shell", path: "scripts/client.sh", args: "192.168.111.5", privileged: false
   end
 end
