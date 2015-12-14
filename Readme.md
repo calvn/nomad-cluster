@@ -20,7 +20,7 @@ $ vagrant up
 This project is very opinionated on some on some of the setup, such as data and config directories and private network IPs.
 Feel free to change those to suit your particular needs.
 
-As of Nomad 0.1.2 there is no Consul integration, and therefore vagrant-hostmanager is used to simulate Consul usage and manage the discovery of nodes.
+In addition to Nomad, it installs Consul agent on each of the boxes to be used for service registration and discovery.
 
 ## Prerequisites:
 - Vagrant 1.7.4+
