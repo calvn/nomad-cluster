@@ -24,4 +24,3 @@ In addition to Nomad, it installs Consul agent on each of the boxes to be used f
 
 ## Prerequisites:
 - Vagrant 1.7.4+
-- vagrant-hostmanager
