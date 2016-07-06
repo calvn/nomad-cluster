@@ -7,15 +7,15 @@ sudo apt-get install -y unzip curl wget
 # Download Nomad
 echo Fetching Nomad...
 cd /tmp/
-curl -sSL https://releases.hashicorp.com/nomad/0.2.1/nomad_0.2.1_linux_amd64.zip -o nomad.zip
+curl -sSL https://releases.hashicorp.com/nomad/0.4.0/nomad_0.4.0_linux_amd64.zip -o nomad.zip
 
 echo Installing Nomad...
 unzip nomad.zip
 sudo chmod +x nomad
 sudo mv nomad /usr/local/bin/nomad
 
-sudo mkdir /etc/nomad.d
-sudo mkdir /var/lib/nomad
+sudo mkdir -p /etc/nomad.d
+sudo mkdir -p /var/lib/nomad
 sudo chmod a+w /etc/nomad.d
 sudo chmod a+w /var/lib/nomad
 
@@ -42,16 +42,16 @@ sudo mv -f /tmp/nomad.conf /etc/init/nomad.conf
 # Download consul
 echo Fetching Consul...
 cd /tmp/
-curl -sSL https://releases.hashicorp.com/consul/0.6.0-rc2/consul_0.6.0-rc2_linux_amd64.zip -o consul.zip
+curl -sSL https://releases.hashicorp.com/consul/0.6.4/consul_0.6.4_linux_amd64.zip -o consul.zip
 
 echo Installing Consul...
 unzip consul.zip
 sudo chmod +x consul
 sudo mv consul /usr/local/bin/consul
 
-sudo mkdir /etc/consul.d
+sudo mkdir -p /etc/consul.d
 sudo chmod a+w /etc/consul.d
-sudo mkdir /var/lib/consul
+sudo mkdir -p /var/lib/consul
 sudo chmod a+w /var/lib/consul
 
 #Set up Consul as a service
