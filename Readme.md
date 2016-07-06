@@ -48,7 +48,7 @@ $ curl nomad-server1:4646/v1/nodes?pretty
     }
 ]
 
-$ curl url nomad-server1:4646/v1/agent/members?pretty
+$ curl nomad-server1:4646/v1/agent/members?pretty
 [
     {
         "Addr": "192.168.111.4",
