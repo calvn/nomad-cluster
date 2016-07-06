@@ -123,6 +123,7 @@ $ curl url nomad-server1:4646/v1/agent/members?pretty
 This project is very opinionated on some on some of the setup, such as data and config directories and private network IPs.
 Feel free to change those to suit your particular needs.
 
+In addition to Nomad, it installs Consul agent on each of the instances to be used for service registration and discovery.
+
 ## Prerequisites:
 - Vagrant 1.7.4+
-- vagrant-hostmanager
