@@ -33,7 +33,7 @@ ID        DC   Name          Class   Drain  Status
 
 From your host:
 ```
-$ curl nomad-server1:4646/v1/nodes
+$ curl nomad-server1:4646/v1/nodes?pretty
 [
     {
         "ID": "5aac3d37-6f36-db55-c473-7afdead2d285",
